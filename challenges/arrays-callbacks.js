@@ -124,3 +124,8 @@ Stretch: If you haven't already, convert your array method callbacks into arrow 
 
 */
 
+zooAnimals.forEach(item =>
+  displayNames.push(item.animal_name, item.scientific_name))
+;
+
+//the above was the only function that was not an arrow function. 
