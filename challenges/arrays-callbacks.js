@@ -1,3 +1,26 @@
+// Briefly compare and contrast .forEach & .map (2-3 sentences max)
+
+//Both iterate through an array, with the major difference being that map produces a new array automatically.
+
+// Explain the difference between a callback and a higher order function.
+
+//A higher order function is a function that takes another function as an argument, and a callback function is the function that gets passed as that argument.
+
+// What is closure?
+
+//Closure is the process by which a function with inner scope can reach outside to grab data from an outer function even after that function has terminated. 
+
+// Describe the four rules of the 'this' keyword.
+
+// Default binding, where this will refer to either window in browser or console in node.
+// Implicit binding, where the this keyword refers to the object preceding the dot. Most common use. All over this .js file.
+// Explicit binding, where we force this to be bound to a particular object such as with .call or .apply.
+// New binding, where we this refers to a specific object created and returned by the constructor function.
+
+// Why do we need super() in an extended class?
+
+//We need it in order to inherit the parameters of the parent class. 
+
 // ==== ADVANCED Array Methods ====
 
 // Given this zoo data from around the United States, follow the instructions below.  Use the specific array methods in the requests below to solve the problems.
