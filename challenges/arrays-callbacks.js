@@ -46,9 +46,10 @@ The zoos want to display both the scientific name and the animal name in front o
 
 const displayNames = [];
 zooAnimals.forEach(function(item){
-  displayNames.push(item.animal_name, item.scientific_name)
+  displayNames.push(`Name: ${item.animal_name},  Scientific: ${item.scientific_name}`)
 });
 console.log(displayNames);
+
 /* Request 2: .map()
 
 The zoos need a list of all their animal's names (animal_name only) converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, each string following this pattern: "jackal, asiatic". Log the resut.
@@ -125,7 +126,7 @@ Stretch: If you haven't already, convert your array method callbacks into arrow 
 */
 
 zooAnimals.forEach(item =>
-  displayNames.push(item.animal_name, item.scientific_name))
+  displayNames.push(`Name: ${item.animal_name},  Scientific: ${item.scientific_name}`))
 ;
 
 //the above was the only function that was not an arrow function. 
