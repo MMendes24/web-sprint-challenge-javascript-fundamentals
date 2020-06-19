@@ -1,3 +1,26 @@
+// Briefly compare and contrast .forEach & .map (2-3 sentences max)
+
+//Both iterate through an array, with the major difference being that map produces a new array automatically.
+
+// Explain the difference between a callback and a higher order function.
+
+//A higher order function is a function that takes another function as an argument, and a callback function is the function that gets passed as that argument.
+
+// What is closure?
+
+//Closure is the process by which a function with inner scope can reach outside to grab data from an outer function even after that function has terminated. 
+
+// Describe the four rules of the 'this' keyword.
+
+// Default binding, where this will refer to either window in browser or console in node.
+// Implicit binding, where the this keyword refers to the object preceding the dot. Most common use. All over this .js file.
+// Explicit binding, where we force this to be bound to a particular object such as with .call or .apply.
+// New binding, where we this refers to a specific object created and returned by the constructor function.
+
+// Why do we need super() in an extended class?
+
+//We need it in order to inherit the parameters of the parent class. 
+
 // ==== ADVANCED Array Methods ====
 
 // Given this zoo data from around the United States, follow the instructions below.  Use the specific array methods in the requests below to solve the problems.
@@ -20,7 +43,11 @@ const zooAnimals = [
 The zoos want to display both the scientific name and the animal name in front of the habitats. Populate the displayNames array with only the animal_name and scientific_name of each animal. displayNames will be an array of strings, and each string should follow this pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
 
 */
+
 const displayNames = [];
+zooAnimals.forEach(function(item){
+  displayNames.push(`Name: ${item.animal_name},  Scientific: ${item.scientific_name}`)
+});
 console.log(displayNames);
 
 /* Request 2: .map()
@@ -29,7 +56,8 @@ The zoos need a list of all their animal's names (animal_name only) converted to
 
 */
 
-const lowCaseAnimalNames
+const lowCaseAnimalNames = zooAnimals.map(item => item.animal_name.toLowerCase())
+
 console.log(lowCaseAnimalNames);
 
 /* Request 3: .filter() 
@@ -37,7 +65,8 @@ console.log(lowCaseAnimalNames);
 The zoos are concerned about animals with a lower population count. Using filter, create a new array of objects called lowPopulationAnimals which contains only the animals with a population less than 5.
 
 */
-const lowPopulationAnimals
+
+const lowPopulationAnimals = zooAnimals.filter(item => item.population < 5)
 console.log(lowPopulationAnimals);
 
 /* Request 4: .reduce() 
@@ -45,10 +74,12 @@ console.log(lowPopulationAnimals);
 The zoos need to know their total animal population across the United States. Find the total population from all the zoos using the .reduce() method. Remember the reduce method takes two arguments: a callback (which itself takes two args), and an initial value for the count.
 
 */
-let populationTotal = 0;
+
+let populationTotal = zooAnimals.reduce((adder, item) => {
+  return adder + item.population / zooAnimals.length
+}, 0);
+
 console.log(populationTotal);
-
-
 // ==== Callbacks ====  
 
 /* Step 1: Create a higher-order function
@@ -58,6 +89,10 @@ console.log(populationTotal);
   * The consume function should return the invocation of cb, passing a and b into cb as arguments
 */
 
+function consume(a, b, cb){
+  return cb(a,b);
+}
+
 
 /* Step 2: Create several functions to callback with consume();
   * Create a function named add that returns the sum of two numbers
@@ -65,14 +100,24 @@ console.log(populationTotal);
   * Create a function named greeting that accepts a first and last name and returns "Hello first-name last-name, nice to meet you!"
 */
 
+function add(num1, num2){
+  return num1 + num2;
+}
+
+function multiply(num1, num2){
+  return num1 * num2
+}
+
+function greeting(first, last){
+  return `Hello ${first} ${last}, nice to meet you!`
+}
+
+
 
 /* Step 3: Check your work by un-commenting the following calls to consume(): */
-// console.log(consume(2, 2, add)); // 4
-// console.log(consume(10, 16, multiply)); // 160
-// console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
-
-
-
+console.log(consume(2, 2, add)); // 4
+console.log(consume(10, 16, multiply)); // 160
+console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
 
 /*
 
@@ -80,3 +125,8 @@ Stretch: If you haven't already, convert your array method callbacks into arrow 
 
 */
 
+zooAnimals.forEach(item =>
+  displayNames.push(`Name: ${item.animal_name},  Scientific: ${item.scientific_name}`))
+;
+
+//the above was the only function that was not an arrow function. 
